@@ -13,6 +13,8 @@ h3, button {
 
 img {
     animation: page-fade-in .5s ease-in;
+    transition-property: width, height, left, top;
+    transition-duration: 8s;
 }
 
 .page-content {
