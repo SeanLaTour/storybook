@@ -10,17 +10,22 @@ const currentPage = {
 
 const BookPage = () => {
     if(typeof window !== 'undefined') {
-        window.scrollTo(0,0);
+        window.addEventListener("load",function() {
+            setTimeout(function(){
+                // This hides the address bar:
+                window.scrollTo(0, 1);
+            }, 0);
+        });
     }
 
     return (
         <div style={{height: "100vh", width: "100vw", backgroundColor: "black", padding: "1rem"}}>
-        <img id="background-image" style={{position: "fixed", top: "0px", left: "0px", width: "100vw", height: "100vh"}} src={backgroundImage}></img>
-        <div id="page-content-box" className="page-content" style={{position: "fixed", top: "0px", left: "0px", width: "100vw", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center"}}>
-            <h3 id="page-content-text" style={{backgroundColor: "#222", borderRadius: "10px", padding: "1rem", opacity: ".7", color: "white"}}>Are you like me?</h3>
-        </div>
-        <button style={{position: "fixed", padding: ".25rem", opacity: .7, borderRadius: "2px", backgroundColor: "#222", color: "white", bottom: "0px", right: "0px"}} onClick={turnPage} >Next Page</button>
-        <button style={{position: "fixed", padding: ".25rem", opacity: .7, borderRadius: "2px", backgroundColor: "#222", color: "white", bottom: "0px", left: "0px"}} >Prev Page</button>
+            <img id="background-image" style={{position: "fixed", top: "0px", left: "0px", width: "100vw", height: "100vh"}} src={backgroundImage}></img>
+            <div id="page-content-box" className="page-content" style={{position: "fixed", top: "0px", left: "0px", width: "100vw", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center"}}>
+                <h3 id="page-content-text" style={{backgroundColor: "#222", borderRadius: "10px", padding: "1rem", opacity: ".7", color: "white"}}>Are you like me?</h3>
+            </div>
+            <button style={{position: "fixed", padding: ".25rem", opacity: .7, borderRadius: "2px", backgroundColor: "#222", color: "white", bottom: "0px", right: "0px"}} onClick={turnPage} >Next</button>
+            <button style={{position: "fixed", padding: ".25rem", opacity: .7, borderRadius: "2px", backgroundColor: "#222", color: "white", bottom: "0px", left: "0px"}} >Home</button>
         </div>
     )
 }
