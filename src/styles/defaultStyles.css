@@ -1,0 +1,41 @@
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
+h3, button {
+    font-family: cursive;
+}
+
+img {
+    animation: page-fade-in .5s ease-in;
+}
+
+.page-content {
+    animation: page-fade-in-delayed 2.25s ease-in;
+}
+
+@keyframes page-fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes page-fade-in-delayed {
+    0% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
