@@ -12,21 +12,23 @@ h3, button {
 }
 
 img {
-    animation: page-fade-in .5s ease-in;
+    animation: page-fade-in 2s ease-in;
     transition-property: width, height, left, top;
     transition-duration: 8s;
 }
 
 .page-content {
-    animation: page-fade-in-delayed 2.25s ease-in;
+    animation: page-fade-in-delayed 3s ease-in;
 }
 
 @keyframes page-fade-in {
     0% {
         opacity: 0;
+        transform: translateX(20vw);
     }
     100% {
         opacity: 1;
+        transform: translateX(0vw);
     }
 }
 
