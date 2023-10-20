@@ -8,6 +8,8 @@ const currentPage = {
     pageText: ["Are you like me?", "Do you wonder what's out there?", "If you're alone..."]
 }
 
+let animationToggle = true;
+
 const BookPage = () => {
     if(typeof window !== 'undefined') {
         window.addEventListener("load",function() {
@@ -34,12 +36,25 @@ const BookPage = () => {
 
 function idleImageAnimation() {
     const imageElement = document.getElementById("background-image");
-    setTimeout(() => {
-        imageElement.style.width = "125vw";
-        imageElement.style.height = "125vh";
-        imageElement.style.left = "-12.5vw";
-        imageElement.style.top = "-10vh";
-    }, 500);
+
+    if(animationToggle) {
+        setTimeout(() => {
+            imageElement.style.width = "125vw";
+            imageElement.style.height = "125vh";
+            imageElement.style.left = "-12.5vw";
+            imageElement.style.top = "-10vh";
+        }, 500);
+    }
+    else {
+        setTimeout(() => {
+            imageElement.style.width = "100vw";
+            imageElement.style.height = "100vh";
+            imageElement.style.left = "0vw";
+            imageElement.style.top = "0vh";
+        }, 5000);
+    }
+
+    animationToggle = !animationToggle;
 }
 
 function turnPage() {
