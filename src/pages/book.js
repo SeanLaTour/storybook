@@ -9,7 +9,10 @@ const currentPage = {
 }
 
 const BookPage = () => {
-    window.scrollTo(0,0)
+    if(typeof window !== 'undefined') {
+        window.scrollTo(0,0);
+    }
+
     return (
         <div style={{height: "100vh", width: "100vw", backgroundColor: "black", padding: "1rem"}}>
         <img id="background-image" style={{position: "fixed", top: "0px", left: "0px", width: "100vw", height: "100vh"}} src={backgroundImage}></img>
