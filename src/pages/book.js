@@ -25,7 +25,9 @@ const BookPage = () => {
                 <h3 id="page-content-text" style={{backgroundColor: "#222", borderRadius: "10px", padding: "1rem", opacity: ".7", color: "white"}}>Are you like me?</h3>
             </div>
             <button style={{position: "fixed", padding: ".25rem", opacity: .7, borderRadius: "2px", backgroundColor: "#222", color: "white", bottom: "0px", right: "0px"}} onClick={turnPage} >Next</button>
-            <button style={{position: "fixed", padding: ".25rem", opacity: .7, borderRadius: "2px", backgroundColor: "#222", color: "white", bottom: "0px", left: "0px"}} >Home</button>
+            <button style={{position: "fixed", padding: ".25rem", opacity: .7, borderRadius: "2px", backgroundColor: "#222", color: "white", bottom: "0px", left: "0px"}} onClick={() => {
+                window.location.reload()
+                }} >Home</button>
         </div>
     )
 }
