@@ -7,20 +7,19 @@ const storyBoard = [
     {
         pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-62de7ec36c224e0eb13ddb59dcbb1f2f.jpg",
         pageText: ["Are you like me?", "Do you wonder...", "If you're alone...?"],
-        pageAnimation: ["none", "none", "zoom-up-and-in"],
+        pageAnimation: ["none", "idle", "zoom-up-and-in"],
         pageNumber: 0
     },
     {
         pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-24a48eb3593f49d8bab90c6c57365d2f.jpg",
         pageText: ["I want to tell you a story", "A very old story."],
-        pageAnimation: ["zoom-and-spin-left-180", "zoom-and-spin-left-0", "zoom-up-and-in"],
-
+        pageAnimation: ["idle", "none", "zoom-up-and-in"],
         pageNumber: 1
     },
     {
         pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-7cba7d99b8984256ba3859de36787f23.jpg",
         pageText: ["About a people how came long before you.", "Long before anyone..."],
-        pageAnimation: ["none", "none", "zoom-up-and-in"],
+        pageAnimation: ["idle", "zoom-up-and-in"],
         pageNumber: 2
     },
     {
@@ -38,7 +37,7 @@ const storyBoard = [
     {
         pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-1b808f9475854fe7bccb8b988ae13e75.jpg",
         pageText: ["To the stars."],
-        pageAnimation: ["none", "none", "zoom-up-and-in"],
+        pageAnimation: ["zoom-up-and-in", "none", "zoom-up-and-in"],
         pageNumber: 5
     }
 ]
@@ -47,7 +46,7 @@ const BookPage = () => {
     const [currentPage, setCurrentPage] = React.useState({
         pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-62de7ec36c224e0eb13ddb59dcbb1f2f.jpg",
         pageText: ["Are you like me?", "Do you wonder...", "If you're alone...?"],
-        pageAnimation: ["zoom-up-and-in", "none", "none", "zoom-up-and-in"],
+        pageAnimation: ["zoom-up-and-in", "none", "zoom-up-and-in"],
         pageNumber: 0
     });
     const [currentBackground, setCurrentBackground] = React.useState("https://u-static.fotor.com/images/text-to-image/result/PRO-62de7ec36c224e0eb13ddb59dcbb1f2f.jpg");
@@ -104,6 +103,14 @@ function idleImageAnimation(animation) {
                 imageElement.style.top = "0vh";
                 imageElement.style.transform = 'rotate(360deg)';
             },6000)
+            break;
+        case "idle":
+            setTimeout(() => {
+                imageElement.style.width = "122vw";
+                imageElement.style.height = "122vh";
+                imageElement.style.left = "-8vw";
+                imageElement.style.top = "-8vh";
+            },2000)
             break;
         case "zoom-and-spin-left-180": 
             imageElement.style.width = "250vw";

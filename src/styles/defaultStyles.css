@@ -12,7 +12,7 @@ h3, button {
 }
 
 img {
-    animation: page-fade-in 2s ease-in;
+    animation: page-fade-in 2s ease-in-out;
     transition-property: all;
     transition-duration: 6s;
 }
