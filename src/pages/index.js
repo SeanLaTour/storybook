@@ -1,4 +1,5 @@
 import * as React from "react"
+import "../styles/defaultStyles.css"
 
 const IndexPage = () => {
   return (
