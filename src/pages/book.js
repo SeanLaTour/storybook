@@ -7,31 +7,38 @@ const storyBoard = [
     {
         pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-62de7ec36c224e0eb13ddb59dcbb1f2f.jpg",
         pageText: ["Are you like me?", "Do you wonder...", "If you're alone...?"],
+        pageAnimation: ["none", "none", "zoom-up-and-in"],
         pageNumber: 0
     },
     {
         pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-24a48eb3593f49d8bab90c6c57365d2f.jpg",
         pageText: ["I want to tell you a story", "A very old story."],
+        pageAnimation: ["zoom-and-spin-left-180", "zoom-and-spin-left-0", "zoom-up-and-in"],
+
         pageNumber: 1
     },
     {
         pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-7cba7d99b8984256ba3859de36787f23.jpg",
         pageText: ["About a people how came long before you.", "Long before anyone..."],
+        pageAnimation: ["none", "none", "zoom-up-and-in"],
         pageNumber: 2
     },
     {
         pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-de65118fbfcd4513a338b7be1ccde766.jpg",
         pageText: ["What started as a dream for them.", "What was always just out of reach."],
+        pageAnimation: ["zoom-up-and-in", "none", "zoom-up-and-in"],
         pageNumber: 3
     },
     {
         pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-a9b356f0886c4b939a8b4bf7c6c3997f.jpg",
         pageText: ["Became real.", "And soon they reached their arms out..."],
+        pageAnimation: ["none", "zoom-up-and-in", "zoom-up-and-in"],
         pageNumber: 4
     },
     {
         pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-1b808f9475854fe7bccb8b988ae13e75.jpg",
         pageText: ["To the stars."],
+        pageAnimation: ["none", "none", "zoom-up-and-in"],
         pageNumber: 5
     }
 ]
@@ -40,6 +47,7 @@ const BookPage = () => {
     const [currentPage, setCurrentPage] = React.useState({
         pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-62de7ec36c224e0eb13ddb59dcbb1f2f.jpg",
         pageText: ["Are you like me?", "Do you wonder...", "If you're alone...?"],
+        pageAnimation: ["zoom-up-and-in", "none", "none", "zoom-up-and-in"],
         pageNumber: 0
     });
     const [currentBackground, setCurrentBackground] = React.useState("https://u-static.fotor.com/images/text-to-image/result/PRO-62de7ec36c224e0eb13ddb59dcbb1f2f.jpg");
@@ -74,15 +82,49 @@ const BookPage = () => {
     )
 }
 
-function idleImageAnimation() {
+function idleImageAnimation(animation) {
     const imageElement = document.getElementById("background-image");
 
-    setTimeout(() => {
-        imageElement.style.width = "125vw";
-        imageElement.style.height = "125vh";
-        imageElement.style.left = "-12.5vw";
-        imageElement.style.top = "-10vh";
-    }, 500);
+    switch(animation) {
+        case "none":
+            break;
+        case "zoom-up-and-in":
+            setTimeout(() => {
+                imageElement.style.width = "125vw";
+                imageElement.style.height = "125vh";
+                imageElement.style.left = "-12.5vw";
+                imageElement.style.top = "-10vh";
+            }, 500);
+            break;
+        case "zoom-and-spin-left-0":
+            setTimeout(() => {
+                imageElement.style.width = "100vw";
+                imageElement.style.height = "100vh";
+                imageElement.style.left = "0vw";
+                imageElement.style.top = "0vh";
+                imageElement.style.transform = 'rotate(360deg)';
+            },6000)
+            break;
+        case "zoom-and-spin-left-180": 
+            imageElement.style.width = "250vw";
+            imageElement.style.height = "250vh";
+            imageElement.style.left = "-75vw";
+            imageElement.style.top = "-75vh";
+            setTimeout(() => {
+                imageElement.style.transform = 'rotate(180deg)';
+                setTimeout(() => {
+                    imageElement.style.width = "100vw";
+                    imageElement.style.height = "100vh";
+                    imageElement.style.left = "0vw";
+                    imageElement.style.top = "0vh";
+                    imageElement.style.transform = 'rotate(360deg)';
+                },6000)
+            },1000)
+            break;
+        default:
+            return;
+    }
+
     // else {
     //     setTimeout(() => {
     //         imageElement.style.width = "100vw";
@@ -95,12 +137,13 @@ function idleImageAnimation() {
 
 function turnPage(oldCurrentPage, setCurrentPage, setCurrentPageIndex, storyBoard, setCurrentPageText) {
     const currentPage = oldCurrentPage;
-    idleImageAnimation();
     const pageElement = document.getElementById("page-content-box");
     const imgElement = document.getElementById("background-image");
     const textElement = document.getElementById("page-content-text");
     const textIndex = textElement.innerHTML.length ? currentPage.pageText.indexOf(textElement.innerHTML) : 0;
-    
+    console.log(currentPage.pageAnimation[textIndex])
+    idleImageAnimation(currentPage.pageAnimation[textIndex]);
+
     if(currentPage.pageText[textIndex + 1]) {
         pageElement.classList.remove("page-content");
         pageElement.classList.add("page-exit-animation");
