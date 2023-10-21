@@ -17,13 +17,13 @@ const storyBoard = [
         pageNumber: 1
     },
     {
-        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-24a48eb3593f49d8bab90c6c57365d2f.jpg",
-        pageText: ["A place far away", "blahh blahh", "more blah blah blah"],
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-7cba7d99b8984256ba3859de36787f23.jpg",
+        pageText: ["I don't have any stuff for here...", "Sooo.. what's up Jules?", "You're like really pretty and stuff"],
         pageNumber: 2
     },
     {
         pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-24a48eb3593f49d8bab90c6c57365d2f.jpg",
-        pageText: ["This is the fourth page", "working good", "end"],
+        pageText: ["Miss you, pretty", "Okay...", "The end haha"],
         pageNumber: 3
     }
 ]
@@ -97,6 +97,7 @@ function turnPage(oldCurrentPage, setCurrentPage, setCurrentPageIndex, storyBoar
     const currentPage = oldCurrentPage;
     idleImageAnimation();
     const pageElement = document.getElementById("page-content-box");
+    const imgElement = document.getElementById("background-image");
     const textElement = document.getElementById("page-content-text");
     const textIndex = textElement.innerHTML.length ? currentPage.pageText.indexOf(textElement.innerHTML) : 0;
     
@@ -108,8 +109,12 @@ function turnPage(oldCurrentPage, setCurrentPage, setCurrentPageIndex, storyBoar
         }, 1);
     } else {
         pageElement.classList.remove("page-content");
+        imgElement.style.display = "none";
+
         setTimeout(() => {
             textElement.innerHTML = [storyBoard[currentPage.pageNumber + 1].pageText[0]]
+            imgElement.src = storyBoard[currentPage.pageNumber + 1].pageBackground;
+            imgElement.style.display = "block";
             pageElement.classList.add("page-content");
         }, 1);
         setCurrentPage(storyBoard[currentPage.pageNumber + 1])

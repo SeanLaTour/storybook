@@ -5,7 +5,7 @@ const IndexPage = () => {
     <div style={{height: "100vh", width: "100vw", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
       <h1>Home</h1>
       <button onClick={() => {
-        window.location.href = "http://localhost:8000/book/"
+        window.location.href = window.location.href + "/book/";
       }} >Open Book</button>
     </div>
   )
