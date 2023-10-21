@@ -13,18 +13,28 @@ const storyBoard = [
     },
     {
         pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-24a48eb3593f49d8bab90c6c57365d2f.jpg",
-        pageText: ["I want to tell you a story", "From long, long ago"],
+        pageText: ["I want to tell you a story", "A very old story."],
         pageNumber: 1
     },
     {
         pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-7cba7d99b8984256ba3859de36787f23.jpg",
-        pageText: ["I don't have any stuff for here...", "Sooo.. what's up Jules?", "You're like really pretty and stuff"],
+        pageText: ["About a people how came long before you.", "Long before anyone..."],
         pageNumber: 2
     },
     {
-        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-24a48eb3593f49d8bab90c6c57365d2f.jpg",
-        pageText: ["Miss you, pretty", "Okay...", "The end haha"],
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-de65118fbfcd4513a338b7be1ccde766.jpg",
+        pageText: ["What started as a dream for them.", "What was always just out of reach."],
         pageNumber: 3
+    },
+    {
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-a9b356f0886c4b939a8b4bf7c6c3997f.jpg",
+        pageText: ["Became real.", "And soon we reached our arms out..."],
+        pageNumber: 4
+    },
+    {
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-1b808f9475854fe7bccb8b988ae13e75.jpg",
+        pageText: ["To the stars."],
+        pageNumber: 5
     }
 ]
 
@@ -41,7 +51,6 @@ const BookPage = () => {
         setTimeout(() => {
 
         }, 1000);
-        // setCurrentPage([storyBoard[currentPageIndex + 1]]);
         if(typeof window !== 'undefined') {
             window.addEventListener("load",function() {
                 setTimeout(function() {
@@ -55,17 +64,17 @@ const BookPage = () => {
 
 
     return (
-        <div style={{height: "100vh", width: "100vw", backgroundColor: "black", padding: "1rem"}}>
+        <div style={{height: "100vh", width: "100vw", backgroundColor: "#E3C5A3", backgroundImage: "url(https://u-static.fotor.com/images/text-to-image/result/PRO-c2398dfed54d44b5afd8ee5bcee19bc9.jpg)", backgroundSize: "cover", padding: "1rem"}}>
             <img id="background-image" style={{position: "fixed", top: "0px", left: "0px", width: "100vw", height: "100vh"}} src={currentBackground}></img>
             <div id="page-content-box" className="page-content" style={{position: "fixed", top: "0px", left: "0px", width: "100vw", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center"}}>
                 <h3 id="page-content-text" style={{backgroundColor: "#222", borderRadius: "10px", padding: "1rem", opacity: ".7", color: "white"}}>{currentPageText}</h3>
             </div>
-            <button style={{position: "fixed", padding: ".25rem", opacity: .7, borderRadius: "2px", backgroundColor: "#222", color: "white", bottom: "0px", right: "0px"}} onClick={() => {
+            <button style={{position: "fixed", padding: ".5rem", opacity: .7, borderRadius: "100%", backgroundColor: "#222", color: "white", bottom: "5vh", right: "5vw"}} onClick={() => {
                 turnPage(currentPage, setCurrentPage, setCurrentPageIndex, storyBoard, setCurrentPageText)
-            }} >Next</button>
-            <button style={{position: "fixed", padding: ".25rem", opacity: .7, borderRadius: "2px", backgroundColor: "#222", color: "white", bottom: "0px", left: "0px"}} onClick={() => {
+            }} >Continue</button>
+            <button style={{position: "fixed", padding: ".5rem", opacity: .7, borderRadius: "100%", backgroundColor: "#222", color: "white", bottom: "5vh", left: "5vw"}} onClick={() => {
                 window.location.reload()
-                }}>Home</button>
+                }}>Beginning</button>
         </div>
     )
 }
@@ -73,24 +82,20 @@ const BookPage = () => {
 function idleImageAnimation() {
     const imageElement = document.getElementById("background-image");
 
-    if(animationToggle) {
-        setTimeout(() => {
-            imageElement.style.width = "125vw";
-            imageElement.style.height = "125vh";
-            imageElement.style.left = "-12.5vw";
-            imageElement.style.top = "-10vh";
-        }, 500);
-    }
-    else {
-        setTimeout(() => {
-            imageElement.style.width = "100vw";
-            imageElement.style.height = "100vh";
-            imageElement.style.left = "0vw";
-            imageElement.style.top = "0vh";
-        }, 2000);
-    }
-
-    animationToggle = !animationToggle;
+    setTimeout(() => {
+        imageElement.style.width = "125vw";
+        imageElement.style.height = "125vh";
+        imageElement.style.left = "-12.5vw";
+        imageElement.style.top = "-10vh";
+    }, 500);
+    // else {
+    //     setTimeout(() => {
+    //         imageElement.style.width = "100vw";
+    //         imageElement.style.height = "100vh";
+    //         imageElement.style.left = "0vw";
+    //         imageElement.style.top = "0vh";
+    //     }, 2000);
+    // }
 }
 
 function turnPage(oldCurrentPage, setCurrentPage, setCurrentPageIndex, storyBoard, setCurrentPageText) {
@@ -112,6 +117,10 @@ function turnPage(oldCurrentPage, setCurrentPage, setCurrentPageIndex, storyBoar
         imgElement.classList.add("page-exit-animation")
         setTimeout(() => {
             imgElement.style.display = "none";
+            imgElement.style.width = "100vw";
+            imgElement.style.height = "100vh";
+            imgElement.style.left = "0vw";
+            imgElement.style.top = "0vh";
         }, 1000)
         setTimeout(() => {
             textElement.innerHTML = [storyBoard[currentPage.pageNumber + 1].pageText[0]]
