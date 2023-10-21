@@ -31,7 +31,7 @@ const storyBoard = [
     {
         pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-a9b356f0886c4b939a8b4bf7c6c3997f.jpg",
         pageText: ["Became real.", "And soon they reached their arms out..."],
-        pageAnimation: ["none", "zoom-up-and-in", "zoom-up-and-in"],
+        pageAnimation: ["zoom-up-and-in", "zoom-up-and-in", "zoom-up-and-in"],
         pageNumber: 4
     },
     {
