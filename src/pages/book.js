@@ -3,8 +3,6 @@ import pageBackground1 from "../images/fotor-ai-20231019185725.jpg"
 import pageBackground2 from "../images/fotor-ai-20231019234522.jpg"
 import "../styles/defaultStyles.css"
 
-let animationToggle = true;
-
 const storyBoard = [
     {
         pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-62de7ec36c224e0eb13ddb59dcbb1f2f.jpg",
@@ -28,7 +26,7 @@ const storyBoard = [
     },
     {
         pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-a9b356f0886c4b939a8b4bf7c6c3997f.jpg",
-        pageText: ["Became real.", "And soon we reached our arms out..."],
+        pageText: ["Became real.", "And soon they reached their arms out..."],
         pageNumber: 4
     },
     {
@@ -48,9 +46,6 @@ const BookPage = () => {
     const [currentPageIndex, setCurrentPageIndex] = React.useState(0);
     const [currentPageText, setCurrentPageText] = React.useState("Are you like me?")
     React.useEffect(() => {
-        setTimeout(() => {
-
-        }, 1000);
         if(typeof window !== 'undefined') {
             window.addEventListener("load",function() {
                 setTimeout(function() {
@@ -108,12 +103,15 @@ function turnPage(oldCurrentPage, setCurrentPage, setCurrentPageIndex, storyBoar
     
     if(currentPage.pageText[textIndex + 1]) {
         pageElement.classList.remove("page-content");
+        pageElement.classList.add("page-exit-animation");
         setTimeout(() => {
             textElement.innerHTML = currentPage.pageText[textIndex + 1];
+            pageElement.classList.remove("page-exit-animation");
             pageElement.classList.add("page-content");
-        }, 1);
+        }, 1000);
     } else {
         pageElement.classList.remove("page-content");
+        pageElement.classList.add("page-exit-animation");
         imgElement.classList.add("page-exit-animation")
         setTimeout(() => {
             imgElement.style.display = "none";
@@ -128,7 +126,8 @@ function turnPage(oldCurrentPage, setCurrentPage, setCurrentPageIndex, storyBoar
             imgElement.classList.remove("page-exit-animation")
             imgElement.style.display = "block";
             pageElement.classList.add("page-content");
-        }, 2000);
+            pageElement.classList.remove("page-exit-animation");
+        }, 1000);
         setCurrentPage(storyBoard[currentPage.pageNumber + 1])
     }
 }
