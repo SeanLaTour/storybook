@@ -1,35 +1,71 @@
-import { indexOf } from "lodash"
 import * as React from "react"
-import backgroundImage from "../images/fotor-ai-20231019185725.jpg"
+import pageBackground1 from "../images/fotor-ai-20231019185725.jpg"
+import pageBackground2 from "../images/fotor-ai-20231019234522.jpg"
 import "../styles/defaultStyles.css"
-
-const currentPage = {
-    pageBackground: backgroundImage,
-    pageText: ["Are you like me?", "Do you wonder what's out there?", "If you're alone..."]
-}
 
 let animationToggle = true;
 
-const BookPage = () => {
-    if(typeof window !== 'undefined') {
-        window.addEventListener("load",function() {
-            setTimeout(function() {
-                // This hides the address bar:
-                window.scrollTo(0, 1);
-            }, 1);
-        });
+const storyBoard = [
+    {
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-62de7ec36c224e0eb13ddb59dcbb1f2f.jpg",
+        pageText: ["Are you like me?", "Do you wonder...", "If you're alone...?"],
+        pageNumber: 0
+    },
+    {
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-24a48eb3593f49d8bab90c6c57365d2f.jpg",
+        pageText: ["I want to tell you a story", "From long, long ago"],
+        pageNumber: 1
+    },
+    {
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-24a48eb3593f49d8bab90c6c57365d2f.jpg",
+        pageText: ["A place far away", "blahh blahh", "more blah blah blah"],
+        pageNumber: 2
+    },
+    {
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-24a48eb3593f49d8bab90c6c57365d2f.jpg",
+        pageText: ["This is the fourth page", "working good", "end"],
+        pageNumber: 3
     }
+]
+
+const BookPage = () => {
+    const [currentPage, setCurrentPage] = React.useState({
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-62de7ec36c224e0eb13ddb59dcbb1f2f.jpg",
+        pageText: ["Are you like me?", "Do you wonder...", "If you're alone...?"],
+        pageNumber: 0
+    });
+    const [currentBackground, setCurrentBackground] = React.useState("https://u-static.fotor.com/images/text-to-image/result/PRO-62de7ec36c224e0eb13ddb59dcbb1f2f.jpg");
+    const [currentPageIndex, setCurrentPageIndex] = React.useState(0);
+    const [currentPageText, setCurrentPageText] = React.useState("Are you like me?")
+    React.useEffect(() => {
+        setTimeout(() => {
+
+        }, 1000);
+        // setCurrentPage([storyBoard[currentPageIndex + 1]]);
+        if(typeof window !== 'undefined') {
+            window.addEventListener("load",function() {
+                setTimeout(function() {
+                    window.scrollTo(0, 1);
+                }, 1000);
+            });
+        }
+        
+    },[currentPage]);
+
+
 
     return (
         <div style={{height: "100vh", width: "100vw", backgroundColor: "black", padding: "1rem"}}>
-            <img id="background-image" style={{position: "fixed", top: "0px", left: "0px", width: "100vw", height: "100vh"}} src={backgroundImage}></img>
+            <img id="background-image" style={{position: "fixed", top: "0px", left: "0px", width: "100vw", height: "100vh"}} src={currentBackground}></img>
             <div id="page-content-box" className="page-content" style={{position: "fixed", top: "0px", left: "0px", width: "100vw", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center"}}>
-                <h3 id="page-content-text" style={{backgroundColor: "#222", borderRadius: "10px", padding: "1rem", opacity: ".7", color: "white"}}>Are you like me?</h3>
+                <h3 id="page-content-text" style={{backgroundColor: "#222", borderRadius: "10px", padding: "1rem", opacity: ".7", color: "white"}}>{currentPageText}</h3>
             </div>
-            <button style={{position: "fixed", padding: ".25rem", opacity: .7, borderRadius: "2px", backgroundColor: "#222", color: "white", bottom: "0px", right: "0px"}} onClick={turnPage} >Next</button>
+            <button style={{position: "fixed", padding: ".25rem", opacity: .7, borderRadius: "2px", backgroundColor: "#222", color: "white", bottom: "0px", right: "0px"}} onClick={() => {
+                turnPage(currentPage, setCurrentPage, setCurrentPageIndex, storyBoard, setCurrentPageText)
+            }} >Next</button>
             <button style={{position: "fixed", padding: ".25rem", opacity: .7, borderRadius: "2px", backgroundColor: "#222", color: "white", bottom: "0px", left: "0px"}} onClick={() => {
                 window.location.reload()
-                }} >Home</button>
+                }}>Home</button>
         </div>
     )
 }
@@ -57,18 +93,26 @@ function idleImageAnimation() {
     animationToggle = !animationToggle;
 }
 
-function turnPage() {
+function turnPage(oldCurrentPage, setCurrentPage, setCurrentPageIndex, storyBoard, setCurrentPageText) {
+    const currentPage = oldCurrentPage;
     idleImageAnimation();
     const pageElement = document.getElementById("page-content-box");
     const textElement = document.getElementById("page-content-text");
-    const textIndex = currentPage.pageText.indexOf(textElement.innerHTML)
-    console.log(textElement.innerHTML, textIndex)
+    const textIndex = textElement.innerHTML.length ? currentPage.pageText.indexOf(textElement.innerHTML) : 0;
+    
     if(currentPage.pageText[textIndex + 1]) {
         pageElement.classList.remove("page-content");
         setTimeout(() => {
             textElement.innerHTML = currentPage.pageText[textIndex + 1];
             pageElement.classList.add("page-content");
         }, 1);
+    } else {
+        pageElement.classList.remove("page-content");
+        setTimeout(() => {
+            textElement.innerHTML = [storyBoard[currentPage.pageNumber + 1].pageText[0]]
+            pageElement.classList.add("page-content");
+        }, 1);
+        setCurrentPage(storyBoard[currentPage.pageNumber + 1])
     }
 }
 
