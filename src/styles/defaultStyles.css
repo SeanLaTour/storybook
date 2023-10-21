@@ -14,11 +14,15 @@ h3, button {
 img {
     animation: page-fade-in 2s ease-in;
     transition-property: width, height, left, top;
-    transition-duration: 8s;
+    transition-duration: 6s;
+}
+
+.page-exit-animation {
+    animation: page-fade-out 1s ease-out;
 }
 
 .page-content {
-    animation: page-fade-in-delayed 3s ease-in;
+    animation: page-fade-in-delayed 2s ease-in;
 }
 
 @keyframes page-fade-in {
@@ -29,6 +33,17 @@ img {
     100% {
         opacity: 1;
         transform: translateX(0vw);
+    }
+}
+
+@keyframes page-fade-out {
+    0% {
+        opacity: 1;
+        transform: translateX(0vw);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-20vw);
     }
 }
 

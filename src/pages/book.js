@@ -87,7 +87,7 @@ function idleImageAnimation() {
             imageElement.style.height = "100vh";
             imageElement.style.left = "0vw";
             imageElement.style.top = "0vh";
-        }, 5000);
+        }, 2000);
     }
 
     animationToggle = !animationToggle;
@@ -109,14 +109,17 @@ function turnPage(oldCurrentPage, setCurrentPage, setCurrentPageIndex, storyBoar
         }, 1);
     } else {
         pageElement.classList.remove("page-content");
-        imgElement.style.display = "none";
-
+        imgElement.classList.add("page-exit-animation")
+        setTimeout(() => {
+            imgElement.style.display = "none";
+        }, 1000)
         setTimeout(() => {
             textElement.innerHTML = [storyBoard[currentPage.pageNumber + 1].pageText[0]]
             imgElement.src = storyBoard[currentPage.pageNumber + 1].pageBackground;
+            imgElement.classList.remove("page-exit-animation")
             imgElement.style.display = "block";
             pageElement.classList.add("page-content");
-        }, 1);
+        }, 2000);
         setCurrentPage(storyBoard[currentPage.pageNumber + 1])
     }
 }
