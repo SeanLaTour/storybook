@@ -37,6 +37,66 @@ const storyBoard = [
         pageText: ["As what it once called love"],
         pageAnimation: ["zoom-up-and-in", "none", "zoom-up-and-in"],
         pageNumber: 5
+    },
+    {
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-0a662d78483244249b1a5f4b007ddd7b.jpg",
+        pageText: ["'Fill it all with ash', it says", "It's better when it's full"],
+        pageAnimation: ["zoom-up-and-in", "none", "zoom-up-and-in"],
+        pageNumber: 6
+    },
+    {
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-b2b3b9b2110b4e8698baa0d31060ba1e.jpg",
+        pageText: ["For some absent minded fool...", "Forgot to fill it with a soul"],
+        pageAnimation: ["zoom-up-and-in", "none", "zoom-up-and-in"],
+        pageNumber: 7
+    },
+    {
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-ad3409eb650e4033b83841b308f99339.jpg",
+        pageText: ["It scratches at it's skin, begging", "For anything, for more"],
+        pageAnimation: ["zoom-up-and-in", "none", "zoom-up-and-in"],
+        pageNumber: 8
+    },
+    {
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-7bfbbe5986d743daa590e481b398b99b.jpg",
+        pageText: ["But all this work just leaves the ash", "Falling, to the floor"],
+        pageAnimation: ["zoom-up-and-in", "none", "zoom-up-and-in"],
+        pageNumber: 9
+    },
+    {
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-4951b5bcabec48e5a6b9e7130583cdb1.jpg",
+        pageText: ["As inside works its way to out", "The heart drops like a stone"],
+        pageAnimation: ["zoom-up-and-in", "none", "zoom-up-and-in"],
+        pageNumber: 10
+    },
+    {
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-f40ba095fc2d4228bb505fe5dc157deb.jpg",
+        pageText: ["Gravity, it seems...", "Didn't do this on its own"],
+        pageAnimation: ["zoom-up-and-in", "none", "zoom-up-and-in"],
+        pageNumber: 11
+    },
+    {
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-f40ba095fc2d4228bb505fe5dc157deb.jpg",
+        pageText: ["The jar of sick and sorrow", "Dropped ajar, and from within"],
+        pageAnimation: ["zoom-up-and-in", "none", "zoom-up-and-in"],
+        pageNumber: 12
+    },
+    {
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-f40ba095fc2d4228bb505fe5dc157deb.jpg",
+        pageText: ["The emptiness crawled out.."],
+        pageAnimation: ["zoom-up-and-in", "none", "zoom-up-and-in"],
+        pageNumber: 13
+    },
+    {
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-f40ba095fc2d4228bb505fe5dc157deb.jpg",
+        pageText: ["And let the emptiness..."],
+        pageAnimation: ["zoom-up-and-in", "none", "zoom-up-and-in"],
+        pageNumber: 14
+    },
+    {
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-f40ba095fc2d4228bb505fe5dc157deb.jpg",
+        pageText: ["Back in."],
+        pageAnimation: ["zoom-up-and-in", "none", "zoom-up-and-in"],
+        pageNumber: 15
     }
 ]
 
