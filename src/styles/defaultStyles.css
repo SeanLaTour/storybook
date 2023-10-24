@@ -13,6 +13,8 @@ div {
 
 h3, button {
     font-family: cursive;
+    transition: all;
+    transition-duration: 2s;
 }
 
 img {

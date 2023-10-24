@@ -4,37 +4,37 @@ import "../styles/defaultStyles.css"
 const storyBoard = [
     {
         pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-62de7ec36c224e0eb13ddb59dcbb1f2f.jpg",
-        pageText: ["Are you like me?", "Do you wonder...", "If you're alone...?"],
+        pageText: ["Are you ready to start?", "Let's begin."],
         pageAnimation: ["none", "idle", "zoom-up-and-in"],
         pageNumber: 0
     },
     {
-        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-24a48eb3593f49d8bab90c6c57365d2f.jpg",
-        pageText: ["I want to tell you a story", "A very old story."],
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-0d137ecdfd7a491c80319d2dfb151cfa.jpg",
+        pageText: ["Longing fingers reach themsleves", "To graze an empty hide"],
         pageAnimation: ["idle", "none", "zoom-up-and-in"],
         pageNumber: 1
     },
     {
-        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-7cba7d99b8984256ba3859de36787f23.jpg",
-        pageText: ["About a people how came long before you.", "Long before anyone..."],
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-60a74845f8984673bcdf79a5e72a61c9.jpg",
+        pageText: ["Grasping for what doesn't live there", "On the other side"],
         pageAnimation: ["idle", "zoom-up-and-in"],
         pageNumber: 2
     },
     {
-        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-de65118fbfcd4513a338b7be1ccde766.jpg",
-        pageText: ["What started as a dream for them.", "What was always just out of reach."],
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-8cd7cffe59cc4caeae4a2d5d3f01d36a.jpg",
+        pageText: ["Parched lips and paper skin flake on it", "Gentely from above"],
         pageAnimation: ["zoom-up-and-in", "none", "zoom-up-and-in"],
         pageNumber: 3
     },
     {
-        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-a9b356f0886c4b939a8b4bf7c6c3997f.jpg",
-        pageText: ["Became real.", "And soon they reached their arms out..."],
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-0bfea37f83ad433a8ef624e6146fa4ac.jpg",
+        pageText: ["The empty hide remembers this"],
         pageAnimation: ["zoom-up-and-in", "zoom-up-and-in", "zoom-up-and-in"],
         pageNumber: 4
     },
     {
-        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-1b808f9475854fe7bccb8b988ae13e75.jpg",
-        pageText: ["To the stars."],
+        pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-f40ba095fc2d4228bb505fe5dc157deb.jpg",
+        pageText: ["As what it once called love"],
         pageAnimation: ["zoom-up-and-in", "none", "zoom-up-and-in"],
         pageNumber: 5
     }
@@ -43,13 +43,13 @@ const storyBoard = [
 const BookPage = () => {
     const [currentPage, setCurrentPage] = React.useState({
         pageBackground: "https://u-static.fotor.com/images/text-to-image/result/PRO-62de7ec36c224e0eb13ddb59dcbb1f2f.jpg",
-        pageText: ["Are you like me?", "Do you wonder...", "If you're alone...?"],
+        pageText: ["Are you ready to start?", "Let's begin."],
         pageAnimation: ["zoom-up-and-in", "none", "zoom-up-and-in"],
         pageNumber: 0
     });
     const [currentBackground, setCurrentBackground] = React.useState("https://u-static.fotor.com/images/text-to-image/result/PRO-62de7ec36c224e0eb13ddb59dcbb1f2f.jpg");
     const [currentPageIndex, setCurrentPageIndex] = React.useState(0);
-    const [currentPageText, setCurrentPageText] = React.useState("Are you like me?")
+    const [currentPageText, setCurrentPageText] = React.useState("Are you ready to start?")
     React.useEffect(() => {
         if(typeof window !== 'undefined') {
             window.addEventListener("load",function() {
@@ -71,18 +71,28 @@ const BookPage = () => {
 
     return (
         <div style={{overflow: "hidden", height: "100vh", width: "100vw", backgroundColor: "#E3C5A3", backgroundImage: "url(https://u-static.fotor.com/images/text-to-image/result/PRO-c2398dfed54d44b5afd8ee5bcee19bc9.jpg)", backgroundSize: "cover"}}>
-            <img id="background-image" style={{overflow: "hidden", position: "absolute", top: "0px", left: "0px", width: "100vw", height: "100vh"}} src={currentBackground}></img>
-            <div id="page-content-box" className="page-content" style={{overflow: "hidden", position: "absolute", top: "0px", left: "0px", width: "100vw", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center"}}>
+            <img id="background-image" style={{overflow: "hidden", position: "fixed", top: "0px", left: "0px", width: "100vw", height: "100vh"}} src={currentBackground}></img>
+            <div id="page-content-box" className="page-content" style={{overflow: "hidden", position: "fixed", top: "0px", left: "0px", width: "100vw", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center"}}>
                 <h3 id="page-content-text" style={{backgroundColor: "#222", borderRadius: "10px", padding: "1rem", opacity: ".7", color: "white"}}>{currentPageText}</h3>
             </div>
-            <button style={{zIndex: 999999, position: "absolute", padding: ".5rem", opacity: .7, borderRadius: "100%", backgroundColor: "#222", color: "white", bottom: "5vh", right: "5vw"}} onClick={() => {
+            <button id="continue-button" style={{zIndex: 999999, position: "fixed", padding: ".5rem", opacity: .7, borderRadius: "100%", backgroundColor: "#222", color: "white", bottom: "5vh", right: "5vw"}} onClick={() => {
                 turnPage(currentPage, setCurrentPage, setCurrentPageIndex, storyBoard, setCurrentPageText)
             }} >Continue</button>
-            <button style={{zIndex: 999999, position: "absolute", padding: ".5rem", opacity: .7, borderRadius: "100%", backgroundColor: "#222", color: "white", bottom: "5vh", left: "5vw"}} onClick={() => {
+            <button style={{zIndex: 999999, position: "fixed", padding: ".5rem", opacity: .7, borderRadius: "100%", backgroundColor: "#222", color: "white", bottom: "5vh", left: "5vw"}} onClick={() => {
                 window.location.reload()
                 }}>Beginning</button>
         </div>
     )
+}
+
+function disableContinueButton() {
+    const button = document.getElementById("continue-button")
+    button.style.backgroundColor = "#222";
+    button.disabled = true;
+    setTimeout(() => {
+        button.style.backgroundColor = "darkorange";
+        button.disabled = false;
+    }, 4000);
 }
 
 function idleImageAnimation(animation) {
@@ -154,6 +164,7 @@ function turnPage(oldCurrentPage, setCurrentPage, setCurrentPageIndex, storyBoar
     const textIndex = textElement.innerHTML.length ? currentPage.pageText.indexOf(textElement.innerHTML) : 0;
     console.log(currentPage.pageAnimation[textIndex])
     idleImageAnimation(currentPage.pageAnimation[textIndex]);
+    disableContinueButton();
 
     if(currentPage.pageText[textIndex + 1]) {
         pageElement.classList.remove("page-content");
