@@ -1,6 +1,4 @@
 import * as React from "react"
-import pageBackground1 from "../images/fotor-ai-20231019185725.jpg"
-import pageBackground2 from "../images/fotor-ai-20231019234522.jpg"
 import "../styles/defaultStyles.css"
 
 const storyBoard = [
@@ -63,7 +61,13 @@ const BookPage = () => {
         
     },[currentPage]);
 
-
+    if(typeof window !== 'undefined') {
+        window.addEventListener("load",function() {
+            setTimeout(function() {
+                window.scrollTo(0, 1);
+            }, 1000);
+        });
+    }
 
     return (
         <div style={{height: "100vh", width: "100vw", backgroundColor: "#E3C5A3", backgroundImage: "url(https://u-static.fotor.com/images/text-to-image/result/PRO-c2398dfed54d44b5afd8ee5bcee19bc9.jpg)", backgroundSize: "cover", padding: "1rem"}}>
