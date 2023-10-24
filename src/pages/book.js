@@ -70,15 +70,15 @@ const BookPage = () => {
     }
 
     return (
-        <div style={{height: "100vh", width: "100vw", backgroundColor: "#E3C5A3", backgroundImage: "url(https://u-static.fotor.com/images/text-to-image/result/PRO-c2398dfed54d44b5afd8ee5bcee19bc9.jpg)", backgroundSize: "cover"}}>
-            <img id="background-image" style={{position: "absolute", top: "0px", left: "0px", width: "100vw", height: "100vh"}} src={currentBackground}></img>
-            <div id="page-content-box" className="page-content" style={{position: "absolute", top: "0px", left: "0px", width: "100vw", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center"}}>
+        <div style={{overflow: "hidden", height: "100vh", width: "100vw", backgroundColor: "#E3C5A3", backgroundImage: "url(https://u-static.fotor.com/images/text-to-image/result/PRO-c2398dfed54d44b5afd8ee5bcee19bc9.jpg)", backgroundSize: "cover"}}>
+            <img id="background-image" style={{overflow: "hidden", position: "absolute", top: "0px", left: "0px", width: "100vw", height: "100vh"}} src={currentBackground}></img>
+            <div id="page-content-box" className="page-content" style={{overflow: "hidden", position: "absolute", top: "0px", left: "0px", width: "100vw", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center"}}>
                 <h3 id="page-content-text" style={{backgroundColor: "#222", borderRadius: "10px", padding: "1rem", opacity: ".7", color: "white"}}>{currentPageText}</h3>
             </div>
-            <button style={{position: "fixed", padding: ".5rem", opacity: .7, borderRadius: "100%", backgroundColor: "#222", color: "white", bottom: "5vh", right: "5vw"}} onClick={() => {
+            <button style={{zIndex: 999999, position: "absolute", padding: ".5rem", opacity: .7, borderRadius: "100%", backgroundColor: "#222", color: "white", bottom: "5vh", right: "5vw"}} onClick={() => {
                 turnPage(currentPage, setCurrentPage, setCurrentPageIndex, storyBoard, setCurrentPageText)
             }} >Continue</button>
-            <button style={{position: "fixed", padding: ".5rem", opacity: .7, borderRadius: "100%", backgroundColor: "#222", color: "white", bottom: "5vh", left: "5vw"}} onClick={() => {
+            <button style={{zIndex: 999999, position: "absolute", padding: ".5rem", opacity: .7, borderRadius: "100%", backgroundColor: "#222", color: "white", bottom: "5vh", left: "5vw"}} onClick={() => {
                 window.location.reload()
                 }}>Beginning</button>
         </div>
