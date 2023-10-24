@@ -88,11 +88,13 @@ const BookPage = () => {
 function disableContinueButton() {
     const button = document.getElementById("continue-button")
     button.style.backgroundColor = "#222";
+    button.style.color = "white";
     button.disabled = true;
     setTimeout(() => {
         button.style.backgroundColor = "darkorange";
+        button.style.color = "black";
         button.disabled = false;
-    }, 4000);
+    }, 5000);
 }
 
 function idleImageAnimation(animation) {

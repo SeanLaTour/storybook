@@ -14,7 +14,7 @@ div {
 h3, button {
     font-family: cursive;
     transition: all;
-    transition-duration: 2s;
+    transition-duration: .5s;
 }
 
 img {
